@@ -24,25 +24,50 @@ package programmers.level2;
 public class maxNumber {
 
 	public String solution(int[] numbers) {
-        String answer = "";
-        
-        int len; // 주어진 수의 갯수
-        for(int i = numbers.length - 1; i >= 0; i--) {
-        	len = numbers[i] * numbers[i - 1];
-        }
-        
-        
-        return answer;
-    }
-	
+		String answer = "";
+		
+		// step1 : 배열의 정수의 갯수 확인
+		int len = 1; // 주어진 정수의 갯수
+		for (int i = numbers.length; i > 1; i--) {
+			len = len * i; // 5-0 * 5-1 *
+		}
+		
+		// int to String
+		String[] str = new String[numbers.length];
+		for(int i = 0; i < numbers.length; i++) {
+			str[i] = String.valueOf(numbers[i]);
+		}
+		
+		// [6, 10] 일때
+		// 610 / 106
+		
+		
+		
+		
+		
+		// step2 : 반복문으로 만들수 있는 조합 생성
+		
+		
+		
+//		for(int i = 0; i < numbers.length; i++) {
+//			
+//		}
+		
+		
+		// step3 : 새로 생성된 배열 정렬 이후 가장 큰 수 리턴
+
+		
+		
+		return answer;
+	}
+
 	public static void main(String[] args) {
-		int[] a = {5,2,20,3,1}; // 5*4*3*2*1 = 120
-		int len1 = 0;
-		int len2 = 0;
-		 for(int i = a.length; i > 1; i--) {
-	        	len2 = i * (i-1);
-	        	len1 *= len2;
-	        }
+		int[] a = { 5, 2, 20, 3, 1 }; // 5*4*3*2*1 = 120
+		int len1 = 1;
+		for (int i = a.length; i > 1; i--) {
+			len1 = len1 * i; // 5-0 * 5-1 *
+		}
 		System.out.println(len1);
 	}
+	
 }
