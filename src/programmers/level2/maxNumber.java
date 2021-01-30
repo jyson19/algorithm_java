@@ -21,43 +21,32 @@
 
 package programmers.level2;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class maxNumber {
 
 	public String solution(int[] numbers) {
 		String answer = "";
-		
-		// step1 : 배열의 정수의 갯수 확인
-		int len = 1; // 주어진 정수의 갯수
-		for (int i = numbers.length; i > 1; i--) {
-			len = len * i; // 5-0 * 5-1 *
-		}
-		
+
 		// int to String
 		String[] str = new String[numbers.length];
-		for(int i = 0; i < numbers.length; i++) {
+		for (int i = 0; i < numbers.length; i++) {
 			str[i] = String.valueOf(numbers[i]);
 		}
-		
-		// [6, 10] 일때
-		// 610 / 106
-		
-		
-		
-		
-		
-		// step2 : 반복문으로 만들수 있는 조합 생성
-		
-		
-		
-//		for(int i = 0; i < numbers.length; i++) {
-//			
-//		}
-		
-		
-		// step3 : 새로 생성된 배열 정렬 이후 가장 큰 수 리턴
 
-		
-		
+		// if [6, 10, 2] - > [6, 2, 10]
+		Arrays.sort(str, new Comparator<String>() {
+			@Override
+			public int compare(String a, String b) {
+				return (b + a).compareTo(a + b);
+			}
+		});
+
+		for (int i = 0; i < str.length; i++) {
+			answer += str[i];
+		}
+
 		return answer;
 	}
 
@@ -69,5 +58,5 @@ public class maxNumber {
 		}
 		System.out.println(len1);
 	}
-	
+
 }

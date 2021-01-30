@@ -20,25 +20,70 @@ import java.time.LocalDateTime;
 public class year2016 {
 
 	public String solution(int a, int b) {
-//		String answer = "";
+		String answer = "";
 //		LocalDateTime ldt = LocalDateTime.now();
 //		LocalDateTime ldt2 = null;
 //		ldt2 = ldt.withYear(2016).withMonth(a).withDayOfMonth(b);
 //		answer = ldt2.getDayOfWeek().toString().substring(0,3);
 //		return answer;
 
-		
-		return LocalDateTime.now().withYear(2016).withMonth(a).withDayOfMonth(b).getDayOfWeek().toString().substring(0,3);
-		
+		// way 1
+//		return LocalDateTime.now().withYear(2016).withMonth(a).withDayOfMonth(b).getDayOfWeek().toString().substring(0,3);
+
+		// way 2
+		String[] month = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
+		int[] day = {31, 29, 31, 30, 31, 30 ,31, 31, 30, 31, 30, 31};
+		int i;
+		if (a == 1) {
+			// a, b : 1 , 1 = > FRI
+			if(b % 7 == 1) {
+//				answer == month[];
+			}
+		} else if (a == 2) {
+			// a, b : 2 , 1 = > MON
+
+		} else if (a == 3) {
+			// a, b : 3 , 1 = > TUE
+
+		} else if (a == 4) {
+			// a, b : 4 , 1 = > FRI
+
+		} else if (a == 5) {
+			// a, b : 5 , 1 = > SUN
+
+		} else if (a == 6) {
+			// a, b : 6 , 1 = > WED
+
+		} else if (a == 7) {
+			// a, b : 7 , 1 = > FRI
+
+		} else if (a == 8) {
+			// a, b : 8 , 1 = > MON
+
+		} else if (a == 9) {
+			// a, b : 9 , 1 = > THU
+
+		} else if (a == 10) {
+			// a, b : 10 , 1 = > SAT
+
+		} else if (a == 11) {
+			// a, b : 12 , 1 = > THU
+
+		} else if (a == 12) {
+			// a, b : 11 , 1 = > TUE
+
+		}
+
+		return null;
 	}
 
 	public static void main(String[] args) {
 		String answer = "";
 		LocalDateTime ldt = LocalDateTime.now();
 		LocalDateTime ldt2 = null;
-		ldt2 = ldt.withYear(2016).withMonth(5).withDayOfMonth(6);
+		ldt2 = ldt.withYear(2016).withMonth(12).withDayOfMonth(1);
 		answer = ldt2.getDayOfWeek().toString();
-		answer = answer.substring(0,3);
+		answer = answer.substring(0, 3);
 		System.out.println(answer);
 	}
 
