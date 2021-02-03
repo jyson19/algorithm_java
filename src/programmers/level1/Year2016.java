@@ -17,7 +17,7 @@ package programmers.level1;
 
 import java.time.LocalDateTime;
 
-public class year2016 {
+public class Year2016 {
 
 	public String solution(int a, int b) {
 		String answer = "";
@@ -38,40 +38,41 @@ public class year2016 {
 			// a, b : 1 , 1 = > FRI
 			if(b % 7 == 1) {
 //				answer == month[];
+				
 			}
 		} else if (a == 2) {
 			// a, b : 2 , 1 = > MON
-
+			
 		} else if (a == 3) {
 			// a, b : 3 , 1 = > TUE
-
+			
 		} else if (a == 4) {
 			// a, b : 4 , 1 = > FRI
-
+			
 		} else if (a == 5) {
 			// a, b : 5 , 1 = > SUN
-
+			
 		} else if (a == 6) {
 			// a, b : 6 , 1 = > WED
-
+			
 		} else if (a == 7) {
 			// a, b : 7 , 1 = > FRI
-
+			
 		} else if (a == 8) {
 			// a, b : 8 , 1 = > MON
-
+			
 		} else if (a == 9) {
 			// a, b : 9 , 1 = > THU
-
+			
 		} else if (a == 10) {
 			// a, b : 10 , 1 = > SAT
-
+			
 		} else if (a == 11) {
 			// a, b : 12 , 1 = > THU
-
+			
 		} else if (a == 12) {
 			// a, b : 11 , 1 = > TUE
-
+			
 		}
 
 		return null;

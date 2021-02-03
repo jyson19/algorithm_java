@@ -31,7 +31,7 @@ package programmers.level1;
 
 import java.util.Arrays;
 
-public class practiceTest {
+public class PracticeTest {
 	public int[] solution(int[] answers) {
 		int[] answer;
 		int[] student1 = { 1, 2, 3, 4, 5 }; // 5

@@ -12,7 +12,7 @@
 
 package programmers.level1;
 
-public class average {
+public class Average {
 
 	public double solution(int[] arr) {
 		double sum = 0; // 리턴값 소수점까지 존재

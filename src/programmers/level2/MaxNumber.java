@@ -24,7 +24,7 @@ package programmers.level2;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class maxNumber {
+public class MaxNumber {
 
 	public String solution(int[] numbers) {
 		String answer = "";
@@ -35,7 +35,21 @@ public class maxNumber {
 			str[i] = String.valueOf(numbers[i]);
 		}
 
-		// if [6, 10, 2] - > [6, 2, 10]
+		
+//		// 숫자열
+//		1 : 2 => -1
+//		2 : 1 => 1
+//		1 : 1 => 0
+//		// 문자열
+//		a : b => -7
+//		aaa : aab => -7
+//		abcd : a => +213213
+//		
+//		abcd : abc => +
+		
+		
+		
+		// [6, 10, 2] => [6, 2, 10] => [6210]
 		Arrays.sort(str, new Comparator<String>() {
 			@Override
 			public int compare(String a, String b) {
@@ -47,6 +61,11 @@ public class maxNumber {
 			answer += str[i];
 		}
 
+		// 0000
+		if (answer.charAt(0) == '0') {
+			answer = "0";
+		}
+		
 		return answer;
 	}
 

@@ -1,6 +1,6 @@
 package practice.st;
 
-public class randomChoice {
+public class RandomChoice {
 
 	static String[] str = { //
 			"진영", //

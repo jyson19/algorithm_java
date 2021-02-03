@@ -12,7 +12,7 @@
 
 package programmers.level1;
 
-public class evenandodd {
+public class EvenAndOdd {
 
 	public static String solution(int num) {
 		// 풀이 1

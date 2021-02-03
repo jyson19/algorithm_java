@@ -30,7 +30,7 @@
 package programmers.level2;
 
 
-public class numberlist {
+public class Numberlist {
 
 	static String[] phone_book;
 	

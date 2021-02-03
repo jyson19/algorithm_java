@@ -32,7 +32,7 @@
 
 package programmers.level2;
 
-public class onetwofour {
+public class Onetwofour {
 
 
 	public static String solution(int n) {
