@@ -35,24 +35,61 @@
 //  중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
 package programmers.level2;
 
-public class Printer {
-	class Solution {
-		public int solution(int[] priorities, int location) {
-			int answer = 0;
+import java.util.LinkedList;
 
-			//  대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities
-			//  return하게 될 순서
-			
-			//  내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location
-			//  인덱스 값
-		
-		
-			return answer;
+public class Printer {
+
+	public static class PrintDoc {
+		int idx;
+		int priority; // 우선 순위
+
+		PrintDoc(int idx, int priority) {
+			this.idx = idx;
+			this.priority = priority;
 		}
 	}
 
+	// 문서의 중요도가 순서대로 담긴 배열 priorities
+	// 인쇄를 요청한 문서가 현재 대기목록의 인덱스 location
+	public static int solution(int[] priorities, int location) {
+		int answer = 1;
+
+		LinkedList<PrintDoc> list = new LinkedList<>();
+
+		for (int i = 0; i < priorities.length; i++) {
+			list.add(new PrintDoc(i, priorities[i])); // from priorities to LinkedList
+		}
+
+		// idx <- 인덱스
+		// priority <- priorities 값
+
+		while (list.size() > 1) {
+			PrintDoc first = list.getFirst();
+			for (int i = 1; i < list.size(); i++) {
+
+				if (first.priority < list.get(i).priority) {
+					list.addLast(first);
+					list.removeFirst();
+					break;
+				}
+
+				if (i == list.size() - 1) {
+					if (first.idx == location)
+						return answer;
+					list.removeFirst();
+					answer++;
+				}
+			}
+		}
+		return answer;
+	}
+
 	public static void main(String[] args) {
-		int[] a = {1, 1, 9, 1, 1, 1};
-//		int[] a
+		int[] ex1 = { 2, 1, 3, 2 };
+		int ex1Loc = 2;
+		int[] ex2 = { 1, 1, 9, 1, 1, 1 };
+		int ex2Loc2 = 0;
+		System.out.println(solution(ex1, ex1Loc));
+//		solution(ex1, ex1Loc);
 	}
 }
