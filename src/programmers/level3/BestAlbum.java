@@ -32,6 +32,35 @@
 
 package programmers.level3;
 
-public class BestAlbum {
+import java.util.HashMap;
+import java.util.HashSet;
 
+public class BestAlbum {
+	public int[] solution(String[] genres, int[] plays) {
+		int[] answer = {};
+
+		// genres[i] = 고유번호가 i인 노래의 장르
+		// plays[i] = 고유번호가 i인 노래가 재생된 횟수
+		
+		// step1
+		// key: 고유번호
+		// value : 장르 or 플레이 횟수
+		HashMap<Integer, String> genreMap = new HashMap<Integer, String>();
+		HashMap<Integer, Integer> playMap = new HashMap<Integer, Integer>();
+		
+		for(int i = 0; i < genres.length; i++){
+			genreMap.put(i, genres[i]);
+			playMap.put(i, plays[i]);
+        }
+		
+		// step2
+		// 장르 분류
+		HashSet<String> genreSet = new HashSet<String>();
+		for(int i = 0; i < genres.length; i++){
+			genreSet.add(genres[i]);
+        }
+		
+
+		return answer;
+	}
 }

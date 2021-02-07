@@ -36,12 +36,15 @@
 package programmers.level2;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class Printer {
 
 	public static class PrintDoc {
+		// idx <- 인덱스
+		// priority <- priorities 값
 		int idx;
-		int priority; // 우선 순위
+		int priority;
 
 		PrintDoc(int idx, int priority) {
 			this.idx = idx;
@@ -49,24 +52,43 @@ public class Printer {
 		}
 	}
 
+	// 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 !
+	//
 	// 문서의 중요도가 순서대로 담긴 배열 priorities
 	// 인쇄를 요청한 문서가 현재 대기목록의 인덱스 location
 	public static int solution(int[] priorities, int location) {
 		int answer = 1;
 
+		// step1. from priorities to LinkedList
 		LinkedList<PrintDoc> list = new LinkedList<>();
 
+		// array : [2, 1, 3, 2]
+
+		// link : [0:2 - 1:1 - 2:3 - 3:2]
+		// [2:3 - 3:2 - 0:2 - 1:1]
+
 		for (int i = 0; i < priorities.length; i++) {
-			list.add(new PrintDoc(i, priorities[i])); // from priorities to LinkedList
+			list.add(new PrintDoc(i, priorities[i]));
 		}
 
-		// idx <- 인덱스
-		// priority <- priorities 값
+//		System.out.println("0번의 idx : " + list.get(0).idx);
+//		System.out.println("0번의 pri : " + list.get(0).priority);
+//		System.out.println("1번의 idx : " + list.get(1).idx);
+//		System.out.println("1번의 pri : " + list.get(1).priority);
+//		System.out.println("2번의 idx : " + list.get(2).idx);
+//		System.out.println("2번의 pri : " + list.get(2).priority);
 
+		// step2. 해당 인덱스의 값이 최대값인지
 		while (list.size() > 1) {
 			PrintDoc first = list.getFirst();
 			for (int i = 1; i < list.size(); i++) {
 
+				// [1, 1, 9, 1, 1, 1]
+				// 1 < 9
+				// [1, 1, 9, 1, 1, 1, 1(new)]
+				// [1, 9, 1, 1, 1, 1(new)]
+				// 
+				// [1, 9, 1, 1, 1, 1] => 최종 [9, 1, 1, 1, 1, 1]
 				if (first.priority < list.get(i).priority) {
 					list.addLast(first);
 					list.removeFirst();
@@ -77,6 +99,7 @@ public class Printer {
 					if (first.idx == location)
 						return answer;
 					list.removeFirst();
+					// [1, 1, 1, 1, 1]
 					answer++;
 				}
 			}
@@ -85,11 +108,11 @@ public class Printer {
 	}
 
 	public static void main(String[] args) {
-		int[] ex1 = { 2, 1, 3, 2 };
-		int ex1Loc = 2;
-		int[] ex2 = { 1, 1, 9, 1, 1, 1 };
-		int ex2Loc2 = 0;
-		System.out.println(solution(ex1, ex1Loc));
+		int[] priorities = { 2, 1, 3, 2 };
+		int location = 2;
+		int[] priorities2 = { 1, 1, 9, 1, 1, 1 };
+		int location2 = 0;
+		System.out.println(solution(priorities, location));
 //		solution(ex1, ex1Loc);
 	}
 }
