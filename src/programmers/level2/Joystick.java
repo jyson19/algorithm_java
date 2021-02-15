@@ -149,14 +149,6 @@ public class Joystick {
 //		}
 
 		int answer = 0;
-//		if (cursorCnt + left > cursorCnt + right) {
-//			answer = cursorCnt + right;
-//		} else {
-//			answer = cursorCnt + left;
-//		}
-
-//		int b = (5 < 4) ? 50 : 40; 
-
 		answer = (cursorCnt + left) <= (cursorCnt + right) ? (cursorCnt + left) : (cursorCnt + right);
 
 		System.out.println(cursorCnt + left);
