@@ -55,15 +55,13 @@ public class Carpet {
 			}
 		}
 		int[] answer = { width, height };
-		System.out.println(width);
-		System.out.println(height);
+		System.out.println("width : " + width);
+		System.out.println("height : " + height);
 		return answer;
 	}
 
 	public static void main(String[] args) {
-//		System.out.println(solution(24, 24)); // [8, 6] 
-		System.out.println(solution(8, 1)); // [3, 3]
-
+		solution(24, 24); // [8, 6] 
+//		solution(8, 1); // [3, 3]
 	}
-
 }

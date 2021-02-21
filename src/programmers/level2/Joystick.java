@@ -151,15 +151,13 @@ public class Joystick {
 		int answer = 0;
 		answer = (cursorCnt + left) <= (cursorCnt + right) ? (cursorCnt + left) : (cursorCnt + right);
 
-		System.out.println(cursorCnt + left);
-		System.out.println(cursorCnt + right);
 		System.out.println("답" + answer);
 		return answer;
 	}
 
 	public static void main(String[] args) {
-		solution("AAABA"); // 3
-//		solution("JEROEN"); // 56
+//		solution("AAABA"); // 3
+		solution("JEROEN"); // 56
 	}
 
 }

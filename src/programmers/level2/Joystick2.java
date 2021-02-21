@@ -26,7 +26,9 @@
 package programmers.level2;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.NoSuchElementException;
 
 public class Joystick2 {
 
@@ -35,47 +37,157 @@ public class Joystick2 {
 	public static int solution(String name) {
 		String[] alphabet2 = { "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N" };
 		String[] alphabet3 = { "Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O" };
-		
+
 		String reverseName = (new StringBuffer(name)).reverse().toString();
-		
-		
-		String[] rightArray = name.split(""); // 우측 탐색 배열
-		String[] leftArray = reverseName.split("");// 좌측 탐색 배열
-		
+
+		// 우측 탐색 배열
+		String[] rightArray = name.split("");
+//		for (String a : rightArray) {
+//			System.out.printf(a);
+//		}
+//		System.out.println();
+
+		// 좌측 탐색 배열
+		String[] leftArray = reverseName.split("");
+
 		String temp = leftArray[leftArray.length - 1];
-		for(int i = 0; i < leftArray.length -1; i++) {
+		for (int i = 0; i < leftArray.length - 1; i++) {
 			leftArray[leftArray.length - (i + 1)] = leftArray[leftArray.length - (i + 2)];
 		}
 		leftArray[0] = temp;
-		
-//		System.out.println(arrayReverseName);
-//		for(String b : arrayReverseName) { 
-//			System.out.println(b);
+//		for (String b : leftArray) {
+//			System.out.printf(b);
 //		}
-		
+//		System.out.println();
+
 		Deque<String> rightQue = new ArrayDeque<>();
-		for(int i = 0; i < rightArray.length; i++) {
+		for (int i = 0; i < rightArray.length; i++) {
 			rightQue.addLast(rightArray[i]);
 		}
+		System.out.println("rightQue : " + rightQue);
+
 		Deque<String> leftQue = new ArrayDeque<>();
-		for(int i = 0; i < leftArray.length; i++) {
+		for (int i = 0; i < leftArray.length; i++) {
 			leftQue.addLast(leftArray[i]);
 		}
-		
-//		rightQue.pollFirst(); // 꺼내고 삭제 후 리턴
-		
-		
+		System.out.println("leftQue : " + leftQue);
+
 		
 		
 		
+		
+		// 우측 탐색
+		int rCurCnt = 0; // 커서 이동 카운트
+		int rAlpCnt = 0; // 알파벳 변경 카운트
+		int rightCnt = 0;
+
+		
+		while (!rightQue.isEmpty()) {
+			try {
+				
+				// 남은게 전부 A인지 체크
+				Deque<String> checkQue = new ArrayDeque<>();
+				for(int i = 0; i < rightQue.size(); i ++) {
+					checkQue.add("A");
+				}
+				if(checkQue.containsAll(rightQue) == true) {
+					break;
+				}
+				
+				
+				
+				if (rightQue.getFirst().equals("A")) {
+					rightQue.poll();
+					rCurCnt++;
+				} else if (Arrays.asList(alphabet2).contains(rightQue.getFirst())) {
+					for (int i = 0; i < alphabet2.length; i++) {
+						if (rightQue.getFirst().equals(alphabet2[i])) {
+							rightQue.poll();
+							rCurCnt++;
+							rAlpCnt += (i + 1);
+						}
+					}
+				} else if (Arrays.asList(alphabet3).contains(rightQue.getFirst())) {
+					for (int j = 0; j < alphabet3.length; j++) {
+						if (rightQue.getFirst().equals(alphabet3[j])) {
+							rightQue.poll();
+							rCurCnt++;
+							rAlpCnt += (j + 1);
+						}
+					}
+				}
+			} catch (NoSuchElementException e) {
+				break;
+			}
+
+		}
+		rightCnt = rCurCnt + rAlpCnt - 1;
+		System.out.println("최종 rightCnt : " + rightCnt);
+
+		
+		
+		
+		
+		// 좌측 탐색
+		int lCurCnt = 0; // 커서 이동 카운트
+		int lAlpCnt = 0; // 알파벳 변경 카운트
+		int leftCnt = 0;
+
+		
+		while (!leftQue.isEmpty()) {
+			try {
+				
+				// 남은게 전부 A인지 체크
+				Deque<String> checkQue = new ArrayDeque<>();
+				for(int i = 0; i < leftQue.size(); i ++) {
+					checkQue.add("A");
+				}
+				if(checkQue.containsAll(leftQue) == true) {
+					break;
+				}
+				
+				
+				
+				
+				if (leftQue.getFirst().equals("A")) {
+					lCurCnt++;
+					leftQue.poll();
+				} else if (Arrays.asList(alphabet2).contains(leftQue.getFirst())) {
+					for (int k = 0; k < alphabet2.length; k++) {
+						if (leftQue.getFirst().equals(alphabet2[k])) {
+							leftQue.poll();
+							lCurCnt++;
+							lAlpCnt += (k + 1);
+						}
+					}
+				} else if (Arrays.asList(alphabet3).contains(leftQue.getFirst())) {
+					for (int l = 0; l < alphabet3.length; l++) {
+						if (leftQue.getFirst().equals(alphabet3[l])) {
+							leftQue.poll();
+							lCurCnt++;
+							lAlpCnt += (l + 1);
+						}
+					}
+				}
+			} catch (NoSuchElementException e) {
+				break;
+			}
+		}
+		leftCnt = lCurCnt + lAlpCnt - 1;
+		System.out.println("최종 leftCnt : " + leftCnt);
+
 		int answer = 0;
+		answer = leftCnt <= rightCnt ? leftCnt : rightCnt;
+		System.out.println("최종 answer : " + answer);
 		return answer;
 	}
 
 	public static void main(String[] args) {
-//		solution("AAABA"); // 3 / AABAA
-//		solution("JEROEN"); // 56 / JNEORE
-		solution("ABCDEFG"); // AGFEDCB
+//		solution("ABAAA"); // 2:7, AAAAAAB
+//		solution("JAN"); // 23 : 24, JNA
+//		solution("JEROEN"); // 56, JNEORE
+//		solution("ABCDEFG"); //27, AGFEDCB
+		solution("AABAAAAAAABBB"); // 16 : 15, ABBBAAAAAAABA
 	}
 
 }
