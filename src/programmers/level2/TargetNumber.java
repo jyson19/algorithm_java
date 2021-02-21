@@ -25,24 +25,31 @@ public class TargetNumber {
 	public static int solution(int[] numbers, int target) {
 
 		Stack<Integer> stack = new Stack<>();
+		// 비교군 초기값 0
 		stack.push(0);
 		
+		// if numbers : 1, 2, 3, 1
 		for (int num : numbers) {
+//			System.out.println("num : " + num);
 			Stack<Integer> tmp = new Stack<>();
 			while (!stack.empty()) {
 				int val = stack.pop();
-				System.out.println("stack : " + stack);
+//				System.out.println("stack : " + stack);
 				tmp.push(val + num);
 				tmp.push(val - num);
 			}
+//			System.out.println("tmp : " + tmp);
 			stack.addAll(tmp);
 		}
-		System.out.println(stack);
+//		System.out.println(stack);
 		return (int) stack.stream().filter(i -> i == target).count();
 	}
 
 	public static void main(String[] args) {
-		int[] num = { 1, 1, 1, 1, 1 };
-		System.out.println(solution(num, 3));
+//		int[] num = { 1, 1, 1, 1, 1 }; // 2^5
+//		System.out.println(solution(num, 3));
+		
+		int[] num = { 1, 2, 3, 1 }; // 2^4
+		System.out.println(solution(num, 5));
 	}
 }
