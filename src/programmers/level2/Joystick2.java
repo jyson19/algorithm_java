@@ -187,7 +187,7 @@ public class Joystick2 {
 //		solution("JAN"); // 23 : 24, JNA
 //		solution("JEROEN"); // 56, JNEORE
 //		solution("ABCDEFG"); //27, AGFEDCB
-		solution("AABAAAAAAABBB"); // 16 : 15, ABBBAAAAAAABA
+		solution("AABAAAAAAABBB"); // 답 : 11 ----- 16 : 15, ABBBAAAAAAABA
 	}
 
 }
