@@ -7,42 +7,64 @@
 // 예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.
 //
 // 10진법	124 나라	10진법	124 나라
-// 1	1	6	14
-// 2	2	7	21
-// 3	4	8	22
-// 4	11	9	24
-// 5	12	10	41
+// 	1			1			6		14
+// 	2			2			7		21
+// 	3			4			8		22
+// 	4			11			9		24
+// 	5			12			10		41
 // 자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요.
 //
 // 제한사항
 // n은 500,000,000이하의 자연수 입니다.
 // 입출력 예
 // n	result
-// 1	1
-// 2	2
-// 3	4
-
-// 1 2 4 진법 -> (0이 없음)
-// 1 2 4 11 12 14 21 22 24 41
-// 1 -> 1
-//  => 3진법에서 0이 없을때
-
-// 3진법 (except 0)
-// 1 2 3 11 12 13 21 22 23 31 32 33 
+// 1		1
+// 2		2
+// 3		4
 
 package basic;
 
 public class Onetwofour {
 
-
 	public static String solution(int n) {
 		String answer = "";
-		
-		
+		// 3 % 3 = 0 -> 4
+		// 1 % 3 = 1 -> 1
+		// 2 % 3 = 2 -> 2
+
+		// 나머지가 0, 1, 2 일때
+		// 0번 인덱스 : 4
+		// 1번 인덱스 : 1
+		// 2번 인덱스 : 2
+		String[] str = { "4", "1", "2" };
+
+		while (n > 0) {
+			if (n % 3 == 0) {
+				answer = str[0] + answer;
+				n /= 3;
+				n--;
+			} else if (n % 3 == 1) {
+				answer = str[1] + answer;
+				n /= 3;
+			} else if (n % 3 == 2) {
+				answer = str[2] + answer;
+				n /= 3;
+			}
+
+			if (n == 0) {
+				break;
+			}
+		}
 		return answer;
 	}
 
 	public static void main(String[] args) {
+//		String a = "1";
+//		String b = "2";
+//		String c = "4";
+//		
+//		System.out.println(Integer.parseInt(a.concat(b)) - 5);
 
+		System.out.println(solution(13));
 	}
 }
