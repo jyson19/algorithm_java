@@ -10,7 +10,7 @@
 // 3	Odd
 // 4	
 
-package programmers.level1;
+package basic;
 
 public class EvenAndOdd {
 

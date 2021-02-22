@@ -10,7 +10,7 @@
 // [1,2,3,4]	2.5
 // [5,5]    5
 
-package programmers.level1;
+package basic;
 
 public class Average {
 

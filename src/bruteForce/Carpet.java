@@ -18,7 +18,7 @@
 //    8	      1  	[3, 3]
 //    24	  24	[8, 6]
 
-package programmers.level2;
+package bruteForce;
 
 public class Carpet {
 

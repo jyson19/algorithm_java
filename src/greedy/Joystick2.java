@@ -23,7 +23,7 @@
 //  name	return
 //  JEROEN    56
 //  JAN       23
-package programmers.level2;
+package greedy;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

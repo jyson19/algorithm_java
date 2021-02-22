@@ -17,7 +17,7 @@
 //[1, 1, 1, 1, 1]	3	5
 //입출력 예 설명
 //문제에 나온 예와 같습니다.
-package programmers.level2;
+package dfsBfs;
 
 import java.util.Stack;
 

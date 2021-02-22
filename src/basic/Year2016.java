@@ -13,7 +13,7 @@
 //a	b	result
 //5	24	
 
-package programmers.level1;
+package basic;
 
 import java.time.LocalDateTime;
 

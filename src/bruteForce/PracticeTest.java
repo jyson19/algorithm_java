@@ -27,7 +27,7 @@
 //
 //모든 사람이 2문제씩을 맞췄습니다.
 
-package programmers.level1;
+package bruteForce;
 
 import java.util.Arrays;
 

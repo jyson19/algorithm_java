@@ -19,7 +19,7 @@
 // 주어진 수가 4개일 때 4! = 4*3*2*1 = 24;
 // 주어진 수가 5개일 때 5! = 5*4*3*2*1 = 120;
 
-package programmers.level2;
+package sort;
 
 import java.util.Arrays;
 import java.util.Comparator;

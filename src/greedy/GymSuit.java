@@ -1,4 +1,4 @@
-package programmers.level1;
+package greedy;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;

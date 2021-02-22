@@ -1,4 +1,4 @@
-package programmers.level2;
+package greedy;
 
 public class Joystick3 {
 

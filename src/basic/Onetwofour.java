@@ -30,7 +30,7 @@
 // 3진법 (except 0)
 // 1 2 3 11 12 13 21 22 23 31 32 33 
 
-package programmers.level2;
+package basic;
 
 public class Onetwofour {
 

@@ -33,7 +33,7 @@
 //
 //  6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 
 //  중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
-package programmers.level2;
+package stackQueue;
 
 import java.util.LinkedList;
 import java.util.PriorityQueue;
