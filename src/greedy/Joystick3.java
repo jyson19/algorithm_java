@@ -18,20 +18,26 @@ public class Joystick3 {
 			} else {
 				answer += 'Z' - name.charAt(i) + 1;
 			}
+			System.out.println("경로 answer1 : " + answer);
 
 			// 2. 좌우: 연속된 A의 등장에 따라 달라지는 최소 움직임
 			int next = i + 1;
 			while (next < len && name.charAt(next) == 'A') {
 				++next;
 			}
-			min_move = Math.min(min_move, i + len - next + Math.min(i, len - next));
+			int ren = len - next;
+			
+			min_move = Math.min(min_move, i + ren + Math.min(i, ren));
+			System.out.println("min_move : " + min_move);
+			System.out.println("answer2 : " + answer);
 
 		}
 		return answer += min_move;
 	}
 
 	public static void main(String[] args) {
-		System.out.println(solution("JEROEN"));
+//		System.out.println(solution("JEROEN"));
+		solution("AAABA");
 		System.out.println(solution("AABAAAAAAABBB")); // 답 : 11 -- 16 : 15, ABBBAAAAAAABA
 	}
 }

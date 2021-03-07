@@ -42,6 +42,7 @@ public class Carpet {
 		for (int i = 1; i <= yellow; i++) {
 
 			if (yellow % i == 0 && yellow != 1) {
+				System.out.println("ye : " + i);
 				if (yellow / i >= i && (yellow / i + 2) * (i + 2) == carpetCnt) { // checkpoint 2
 					if ((i * 2) + ((yellow / i) * 2) + 4 == brown) { // check point 3
 						width = yellow / i + 2;
@@ -55,8 +56,8 @@ public class Carpet {
 			}
 		}
 		int[] answer = { width, height };
-		System.out.println("width : " + width);
-		System.out.println("height : " + height);
+//		System.out.println("width : " + width);
+//		System.out.println("height : " + height);
 		return answer;
 	}
 
