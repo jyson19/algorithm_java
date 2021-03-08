@@ -37,6 +37,8 @@ public class Spicy {
 			pQ.offer(scoville[i]);
 		}
 		
+//		System.out.println(pQ);
+		
 		while (pQ.peek() < K) {
 			// 조합 불가
 			if (pQ.size() == 1) {
@@ -52,7 +54,8 @@ public class Spicy {
 	}
 
 	public static void main(String[] args) {
-		int[] scoville = { 1, 2, 3, 9, 10, 12 };
-		System.out.println(solution(scoville, 7));
+//		int[] scoville = { 1, 2, 3, 9, 10, 12 };
+		int[] scoville = { 52, 1, 5, 6, 33, 12 }; // -> 52, 11, 6, 33, 12 -> 52, 28, 33, 12 -> 52, 52, 33 -> 52, 118
+		System.out.println(solution(scoville, 52));
 	}
 }

@@ -57,10 +57,6 @@ public class Camouflage {
 			}
 		}
 
-//		for(int i = 0; i < cloList.size(); i++) {
-//			System.out.println(cloList.get(i));
-//		}
-
 		HashMap<String, String> hm = new HashMap<>();
 		for (int i = 0; i < cloList.size();) {
 			hm.put(cloList.get(i), cloList.get(i + 1));
