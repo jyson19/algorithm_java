@@ -1,8 +1,8 @@
 package dfsBfs;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Set;
 
 //네트워크
 //문제 설명
@@ -19,7 +19,7 @@ import java.util.List;
 //n	computers	return
 //3	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]	2
 //3	[[1, 1, 0], [1, 1, 1], [0, 1, 1]]	1
-public class Network2 {
+public class Network3 {
 	//
 	// # 0 1 2
 	// 0 1 1 0 {01}
@@ -46,39 +46,42 @@ public class Network2 {
 	//
 	public static int solution(int n, int[][] computers) {
 		int answer = 0;
-		List<Integer> nList = new ArrayList<>();
+		int[] tmp = new int[n];
 		for (int i = 0; i < n; i++) {
-			nList.add(i);
+			tmp[i] = 0;
+//			System.out.println(tmp[i]);
 		}
-//		System.out.println(computers.length);
 
-		boolean flag = true;
-		while (flag) {
+		for(int j = 0; j < n; j++) {
+			System.out.println(tmp[j]);
+		}
+		int cnt = 0;
+		while (true) {
 			for (int i = 0; i < n; i++) {
-				HashMap<Integer, Integer> comHm = new HashMap<>();
-				for (int j = 0; j < n; j++) {
-
-					comHm.put(j, computers[i][j]);
-					if (nList.get(j) <= 200 && computers[i][j] == 1) {
-						nList.set(j, 201);
-						System.out.println(nList);
+				if (tmp[i] != 1) {
+					for (int j = 0; j < computers.length; j++) {
+						if (i != j && computers[i][j] == 1 && tmp[j] == 0) {
+							tmp[i] = 1;
+						}
 					}
-				}
-				if (comHm.values().contains(0) == false) {
-					return 1;
-				}
-
-				answer++;
-				int listSum = nList.stream().mapToInt(Integer::intValue).sum();
-				if (listSum == n * 201) {
-					flag = false;
+					answer++;
 				}
 			}
+			cnt++;
+			
+			System.out.println(tmp[0] + " " + tmp[1] + " " + tmp[2]);
+			int sum = 0;
+			for (int i = 0; i < tmp.length; i++) {
+				sum += tmp[i];
+			}
+			System.out.println("sum : " + sum);
+			System.out.println("cnt : " + cnt);
+			if (sum == n || cnt == n) {
+				break;
+			}
 		}
-		if (answer == n + 1) {
-			return 1;
-		}
-		return answer - 1;
+
+		return answer;
 	}
 
 	public static void main(String[] args) {
