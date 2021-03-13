@@ -48,7 +48,7 @@ import java.util.Set;
 
 public class Camouflage {
 	public static int solution(String[][] clothes) {
-//		System.out.println(clothes.length);
+		System.out.println(clothes.length);
 		List<String> cloList = new ArrayList<String>();
 		for (int i = 0; i < clothes.length; i++) {
 			for (int j = 0; j <= 1; j++) {
@@ -89,21 +89,19 @@ public class Camouflage {
 
 		System.out.println("----------------------------");
 
-		
-
 		// 총 옷의 개수
 		int cloCount = 0;
 		List<Integer> cloNumList = new ArrayList<>();
-		for(int cloNum : cloHm.values()) {
+		for (int cloNum : cloHm.values()) {
 			cloNumList.add(cloNum);
 		}
-		for(int i = 0; i < cloNumList.size(); i++) {
+		for (int i = 0; i < cloNumList.size(); i++) {
 			cloCount += cloNumList.get(i);
 		}
-		
+
 		// 총 옷의 개수 x 옷의 종류(cloHm.size()) - 1(다 벗었을때)
 		int answer = 0;
-		if(cloHm.size() != 1) {
+		if (cloHm.size() != 1) {
 			answer = cloCount * cloHm.size() - 1;
 		} else {
 			answer = cloCount;
@@ -114,7 +112,7 @@ public class Camouflage {
 	public static void main(String[] args) {
 //		String[][] clothes = { { "yellowhat", "headgear" }, { "bluesunglasses", "eyewear" },
 //				{ "green_turban", "headgear" } }; // 5
-		String[][] clothes = {{"crowmask", "face"}, {"bluesunglasses", "face"}, {"smoky_makeup", "face"}}; // 3
+		String[][] clothes = { { "crowmask", "face" }, { "bluesunglasses", "face" }, { "smoky_makeup", "face" } }; // 3
 		System.out.println("result : " + solution(clothes));
 	}
 }

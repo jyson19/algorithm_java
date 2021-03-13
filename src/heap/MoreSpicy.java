@@ -28,7 +28,7 @@ import java.util.PriorityQueue;
 //가진 음식의 스코빌 지수 = [13, 9, 10, 12]
 //
 //모든 음식의 스코빌 지수가 7 이상이 되었고 이때 섞은 횟수는 2회입니다.
-public class Spicy {
+public class MoreSpicy {
 	public static int solution(int[] scoville, int K) {
 		int answer = 0;
 		
@@ -56,6 +56,6 @@ public class Spicy {
 	public static void main(String[] args) {
 //		int[] scoville = { 1, 2, 3, 9, 10, 12 };
 		int[] scoville = { 52, 1, 5, 6, 33, 12 }; // -> 52, 11, 6, 33, 12 -> 52, 28, 33, 12 -> 52, 52, 33 -> 52, 118
-		System.out.println(solution(scoville, 52));
+		System.out.println("result : " + solution(scoville, 52));
 	}
 }

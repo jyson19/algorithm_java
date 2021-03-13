@@ -55,6 +55,7 @@ public class Network3 {
 		for(int j = 0; j < n; j++) {
 			System.out.println(tmp[j]);
 		}
+		
 		int cnt = 0;
 		while (true) {
 			for (int i = 0; i < n; i++) {

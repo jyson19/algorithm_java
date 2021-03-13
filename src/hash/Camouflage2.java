@@ -56,8 +56,7 @@ public class Camouflage2 {
 				cloHm.put(key, cloHm.get(key) + 1);
 			}
 		}
-//		System.out.println(cloHm);
-		
+		System.out.println(cloHm);
 
 		Set<String> keySet = cloHm.keySet();
 //		System.out.println(keySet);
