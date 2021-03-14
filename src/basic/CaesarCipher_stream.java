@@ -1,8 +1,8 @@
-package test;
+package basic;
 
 import java.util.stream.IntStream;
 
-public class Test {
+public class CaesarCipher_stream {
 	// a-z : 97~122
 	// A-Z : 65~90
 	static String answer = "";
