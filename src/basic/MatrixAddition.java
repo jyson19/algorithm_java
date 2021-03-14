@@ -1,9 +1,9 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12947
-package test;
+package basic;
 
 import java.util.stream.IntStream;
 
-public class Test {
+public class MatrixAddition {
 
     public static int[][] solution(int[][] arr1, int[][] arr2) {
         int[][] answer = new int[arr1.length][arr1[0].length];
