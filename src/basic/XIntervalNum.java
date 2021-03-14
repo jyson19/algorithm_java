@@ -1,19 +1,11 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12947
-package test;
+package basic;
 
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-public class Test {
+public class XIntervalNum {
 
     public static long[] solution(int x, int n) {
-    	long[] answer = {};
-//        IntStream.range(x, x*n).map(i -> i*x - x).limit(10).toArray();
-//        IntStream.iterate(x, i -> i + x).limit(x*n).toArray());
-        
-        
         return LongStream.iterate(x, i -> i + x).limit(n).toArray();
     }
 
