@@ -1,9 +1,9 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12947
-package test;
+package basic;
 
 import java.util.stream.IntStream;
 
-public class Test {
+public class HarshadNumber {
 
 	static int sum = 0;
 	static boolean answer = true;
