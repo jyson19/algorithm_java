@@ -1,9 +1,6 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12947
 package test;
 
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 public class Test {

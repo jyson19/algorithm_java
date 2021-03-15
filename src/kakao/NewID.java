@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 // 신규아이디 추천
 
-public class newID {
+public class NewID {
 	public static String solution(String new_id) {
 		// 사용 가능한 단어
 		// 알파벳 소문자,
