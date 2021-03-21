@@ -3,8 +3,10 @@ package kakao;
 import java.util.ArrayList;
 import java.util.List;
 
+// 5만 * 10만개 데이터 탐색에 비효율적
 public class SearchRankings {
 	public static int[] solution(String[] info, String[] query) {
+		
 		int[] answer = new int[info.length];
 
 		List<String> infoList = new ArrayList<>();
@@ -17,33 +19,38 @@ public class SearchRankings {
 			queryList.add(str2);
 		}
 		
-		System.out.println(queryList.size());
 		for (int i = 0; i < queryList.size(); i++) {
 			int ansCnt = 0;
+			List<String> qList = new ArrayList<>();
+			for (String qs : queryList.get(i).replace(" and", "").split(" ")) {
+				qList.add(qs);
+			}
 			for (int h = 0; h < 5; h++) {
 				int cnt = 0;
-				List<String> qList = new ArrayList<>();
 				List<String> iList = new ArrayList<>();
-				for (String qs : queryList.get(i).replace(" and", "").split(" ")) {
-					qList.add(qs);
-				}
-				for (String is : infoList.get(i).split(" ")) {
+				for (String is : infoList.get(h).split(" ")) {
 					iList.add(is);
 				}
-				for(int l = 0; l < qList.size(); l++) {
-					if (iList.get(l).equals(qList.get(l)) || iList.get(l).equals("-")) {
+				if(Integer.parseInt(iList.get(4)) >= Integer.parseInt(qList.get(4))) {
+					cnt++;
+				}
+				for(int l = 0; l < qList.size() - 1; l++) {
+					if (iList.get(l).equals(qList.get(l)) || qList.get(l).equals("-")) {
 						cnt++;
-						System.out.println("cnt : " + cnt);
-					}
+					} else break;
 				}
 				if (cnt == 5) {
 					ansCnt++;
-					System.out.println("ansCnt : " + ansCnt);
 				}
 			}
 			answer[i] = ansCnt;
 		}
-		
+		System.out.println(answer[0]);
+		System.out.println(answer[1]);
+		System.out.println(answer[2]);
+		System.out.println(answer[3]);
+		System.out.println(answer[4]);
+		System.out.println(answer[5]);
 		return answer;
 	}
 
