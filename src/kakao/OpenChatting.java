@@ -1,4 +1,4 @@
-package test;
+package kakao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 
 public class OpenChatting {
 	public static String[] solution(String[] record) {
-
 		int resultLength = 0;
 		String[] msg = { "님이 들어왔습니다.", "님이 나갔습니다." };
 
