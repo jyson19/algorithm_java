@@ -1,4 +1,4 @@
-package kakao;
+package hash;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class OpenChatting {
 				resultLength++;
 			} else if (str[0].equals("Change")) {
 				hm.put(str[1], str[2]);
-			} 
+			}
 		}
 		
 		
