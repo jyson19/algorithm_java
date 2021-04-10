@@ -31,35 +31,57 @@ public class TriangularSnail {
 		while (list.contains(0)) {
 			System.out.println("flag : " + flag);
 			if (flag) {
+				System.out.println("right 시작");
+				System.out.println("list.get(0) : " + list.get(0));
 				right(list, currIdx, currNum, rightCnt, loopCnt);
 				rightCnt++;
 			} else {
+				System.out.println("left 시작");
+				System.out.println("list.get(0) : " + list.get(0));
+				System.out.println("currIdx : " + currIdx);
+				System.out.println("currNum : " + currNum);
+				System.out.println("loopCnt : " + loopCnt);
 				left(list, currIdx, currNum, leftCnt, loopCnt);
 				leftCnt--;
+				break;
 			}
-			
-			if(flag) {
+
+			if (flag) {
 				flag = false;
 			} else {
 				flag = true;
 			}
 			loopCnt--;
+			System.out.println("while문 종료");
 		}
+//		for (int i = 0; i < list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
 
-		
-		
 		return answer;
 	}
 
-	public static List left(List tmpList, int currIdx, int currNum, int leftCnt, int loopCnt) {
-		return tmpList;
+	// 좌측방향
+	static void left(List<Integer> tmpList, int currIdx, int currNum, int leftCnt, int loopCnt) {
 	}
 
-	public static List right(List tmpList, int currIdx, int currNum, int rightCnt, int loopCnt) {
-		for(int i = rightCnt; i < loopCnt; i++) {
-//			tmpList.set(currIdx, element)
+	// 우측방향
+	static void right(List<Integer> tmpList, int currIdx, int currNum, int rightCnt, int loopCnt) {
+		for (int i = rightCnt; i < loopCnt; i++) {
+			tmpList.set(currIdx, currNum);
+			currNum++;
+			currIdx = currIdx + i;
 		}
-		return tmpList;
+		// 연속숫자
+		for (int j = loopCnt; j < loopCnt * 2; j++) {
+			tmpList.set(currIdx, currNum);
+			currIdx++;
+			currNum++;
+		}
+		currIdx--;
+		System.out.println("currIdx : " + currIdx);
+		System.out.println("currNum : " + currNum);
+		System.out.println("loopCnt : " + loopCnt);
 	}
 
 	public static void main(String[] args) {
