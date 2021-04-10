@@ -23,33 +23,18 @@ public class TriangularSnail {
 		boolean flag = true;
 		int check = n;
 		while (list.contains(0)) {
-//			System.out.println("flag : " + flag);
 			if (flag) {
-//				System.out.println("right 시작");
 				right(list, check, n);
-//				for (int i = 0; i < list.size(); i++) {
-//					System.out.println(list.get(i));
-//				}
-//				System.out.println("--------------------------");
 			} else {
-//				System.out.println("left 시작");
 				left(list, check);
-//				System.out.println("0값 : " + list.indexOf(0));
-//				System.out.println("최대값 : " + Collections.max(list));
-//				for (int i = 0; i < list.size(); i++) {
-//					System.out.println(list.get(i));
-//				}
-//				System.out.println("--------------------------");
 			}
 			check--;
-//			System.out.println("check : " + check);
 
 			if (flag) {
 				flag = false;
 			} else {
 				flag = true;
 			}
-//			System.out.println("while문 종료");
 		}
 		return list;
 	}
@@ -60,7 +45,6 @@ public class TriangularSnail {
 		int currIdx = tmpList.lastIndexOf(0);
 		// 진행 값
 		int maxInt = Collections.max(tmpList) + 1;
-//		System.out.println("currIdx : " + currIdx);
 		for (int i = check - 1; i > 0; i--) {
 			tmpList.set(currIdx, maxInt);
 			maxInt++;
@@ -79,10 +63,7 @@ public class TriangularSnail {
 		// 진행 값
 		int maxInt = Collections.max(tmpList) + 1;
 		int temp = n - check + 1;
-//		System.out.println("(currIdx/2) : " + (currIdx / 2));
-
 		for (int i = 0; i < check - 1; i++) {
-//			System.out.println("maxInt : " + maxInt);
 			tmpList.set(currIdx, maxInt);
 			maxInt++;
 			currIdx = currIdx + i + temp;
@@ -90,14 +71,12 @@ public class TriangularSnail {
 				return;
 			}
 		}
-//		System.out.println("currIdx : " + currIdx);
 		// 연속숫자
 		if (check != n) {
 			check /= 2;
 			currIdx = tmpList.indexOf(Collections.max(tmpList)) + 1;
 		}
 		for (int j = 0; j < check; j++) {
-//			System.out.println("right연속숫자 : " + maxInt);
 			tmpList.set(currIdx, maxInt);
 			currIdx++;
 			maxInt++;
@@ -109,7 +88,7 @@ public class TriangularSnail {
 
 	public static void main(String[] args) {
 		// 9부터 안돌아감..
-		int n = 9;
+		int n = 8;
 //		int n = 1;
 //		int n = 2;
 //		int n = 3;
