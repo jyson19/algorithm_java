@@ -1,6 +1,7 @@
 package basic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // 삼각 달팽이
@@ -11,84 +12,113 @@ public class TriangularSnail {
 	// 5 : 15
 	// 6 : 21
 	// n : n(n+1)/2
-	public static int[] solution(int n) {
-		int[] answer = {};
-
+	public static List<Integer> solution(int n) {
 		List<Integer> list = new ArrayList<>();
 		for (int i = 0; i < n * (n + 1) / 2; i++) {
 			list.add(0);
 		}
-		System.out.println(list.size());
 
 		// true : right
 		// false : left
 		boolean flag = true;
-		int leftCnt = n;
-		int rightCnt = 1;
-		int currIdx = 0;
-		int currNum = 1;
-		int loopCnt = n;
+		int check = n;
 		while (list.contains(0)) {
-			System.out.println("flag : " + flag);
+//			System.out.println("flag : " + flag);
 			if (flag) {
-				System.out.println("right 시작");
-				System.out.println("list.get(0) : " + list.get(0));
-				right(list, currIdx, currNum, rightCnt, loopCnt);
-				rightCnt++;
+//				System.out.println("right 시작");
+				right(list, check, n);
+//				for (int i = 0; i < list.size(); i++) {
+//					System.out.println(list.get(i));
+//				}
+//				System.out.println("--------------------------");
 			} else {
-				System.out.println("left 시작");
-				System.out.println("list.get(0) : " + list.get(0));
-				System.out.println("currIdx : " + currIdx);
-				System.out.println("currNum : " + currNum);
-				System.out.println("loopCnt : " + loopCnt);
-				left(list, currIdx, currNum, leftCnt, loopCnt);
-				leftCnt--;
-				break;
+//				System.out.println("left 시작");
+				left(list, check);
+//				System.out.println("0값 : " + list.indexOf(0));
+//				System.out.println("최대값 : " + Collections.max(list));
+//				for (int i = 0; i < list.size(); i++) {
+//					System.out.println(list.get(i));
+//				}
+//				System.out.println("--------------------------");
 			}
+			check--;
+//			System.out.println("check : " + check);
 
 			if (flag) {
 				flag = false;
 			} else {
 				flag = true;
 			}
-			loopCnt--;
-			System.out.println("while문 종료");
+//			System.out.println("while문 종료");
 		}
-//		for (int i = 0; i < list.size(); i++) {
-//			System.out.println(list.get(i));
-//		}
-
-		return answer;
+		return list;
 	}
 
 	// 좌측방향
-	static void left(List<Integer> tmpList, int currIdx, int currNum, int leftCnt, int loopCnt) {
+	static void left(List<Integer> tmpList, int check) {
+		// 시작 인덱스
+		int currIdx = tmpList.lastIndexOf(0);
+		// 진행 값
+		int maxInt = Collections.max(tmpList) + 1;
+//		System.out.println("currIdx : " + currIdx);
+		for (int i = check - 1; i > 0; i--) {
+			tmpList.set(currIdx, maxInt);
+			maxInt++;
+			currIdx = currIdx - i - 1;
+			if (!tmpList.contains(0)) {
+				return;
+			}
+		}
 	}
 
 	// 우측방향
-	static void right(List<Integer> tmpList, int currIdx, int currNum, int rightCnt, int loopCnt) {
-		for (int i = rightCnt; i < loopCnt; i++) {
-			tmpList.set(currIdx, currNum);
-			currNum++;
-			currIdx = currIdx + i;
+	static void right(List<Integer> tmpList, int check, int n) {
+		// 시작 인덱스
+		// 두번째 바퀴 : 4
+		int currIdx = tmpList.indexOf(0);
+		// 진행 값
+		int maxInt = Collections.max(tmpList) + 1;
+		int temp = n - check + 1;
+//		System.out.println("(currIdx/2) : " + (currIdx / 2));
+
+		for (int i = 0; i < check - 1; i++) {
+//			System.out.println("maxInt : " + maxInt);
+			tmpList.set(currIdx, maxInt);
+			maxInt++;
+			currIdx = currIdx + i + temp;
+			if (!tmpList.contains(0)) {
+				return;
+			}
 		}
+//		System.out.println("currIdx : " + currIdx);
 		// 연속숫자
-		for (int j = loopCnt; j < loopCnt * 2; j++) {
-			tmpList.set(currIdx, currNum);
-			currIdx++;
-			currNum++;
+		if (check != n) {
+			check /= 2;
+			currIdx = tmpList.indexOf(Collections.max(tmpList)) + 1;
 		}
-		currIdx--;
-		System.out.println("currIdx : " + currIdx);
-		System.out.println("currNum : " + currNum);
-		System.out.println("loopCnt : " + loopCnt);
+		for (int j = 0; j < check; j++) {
+//			System.out.println("right연속숫자 : " + maxInt);
+			tmpList.set(currIdx, maxInt);
+			currIdx++;
+			maxInt++;
+			if (!tmpList.contains(0)) {
+				return;
+			}
+		}
 	}
 
 	public static void main(String[] args) {
+		// 9부터 안돌아감..
+		int n = 9;
+//		int n = 1;
+//		int n = 2;
+//		int n = 3;
+//		int n = 4; // 1,2,9,3,10,8,4,5,6,7
+
 		// > 1 2 3 4 ~ 연속숫자
 		// < 5 4 3
 		// > 2 3 ~ 연속숫자
-		int n = 5; // 1,2,12,3,13,11,4,14,15,10,5,6,7,8,9
+//		int n = 5; // 1,2,12,3,13,11,4,14,15,10,5,6,7,8,9
 
 		// > 1 2 3 4 5 ~ 연속숫자
 		// < 6 5 4 3
