@@ -1,5 +1,6 @@
 package dfsBfs;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -55,7 +56,10 @@ public class MostFarNode {
 		queue.offer(point);
 		visited[point] = true;
 
+		HashMap<Integer, Integer> hm = new HashMap<>();
+		int cnt = 0;
 		while (!queue.isEmpty()) {
+			System.out.println("q사이즈 : " + queue.size());
 			int x = queue.poll();
 			System.out.println(x + " 체크");
 			for (int i = 1; i <= N; i++) {
@@ -63,11 +67,21 @@ public class MostFarNode {
 				if (map[x][i] == 1 && visited[i] == false) {
 					queue.offer(i);
 					visited[i] = true;
+					answer++;
+					System.out.println("answer : " + answer);
+					hm.put(i, cnt);
 				}
+//				cnt++;
+//				System.out.println("cnt : " + cnt);
+//				if(cnt == N) hm.put(x, cnt);
 			}
-			answer++;
-			System.out.println("answer : " + answer);
+			cnt++;
+			System.out.println("cnt : " + cnt);
 		}
+		for( int key : hm.keySet() ){
+			 System.out.println( String.format("키 : %s, 값 : %s", key, hm.get(key)));
+		}
+
 	}
 
 	public static void main(String[] args) {
