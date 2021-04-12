@@ -1,9 +1,7 @@
 package dfsBfs;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.StringTokenizer;
 
 // 가장 먼 노드
 // https://programmers.co.kr/learn/courses/30/lessons/49189
@@ -16,72 +14,32 @@ import java.util.StringTokenizer;
 // 간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.
 // vertex 배열 각 행 [a, b]는 a번 노드와 b번 노드 사이에 간선이 있다는 의미입니다.
 public class MostFarNode {
-	static int[][] map;
-	static boolean[] visited;
-	static StringTokenizer st;
-	static int N, M, start, end;
+	public static int solution(int n, int[][] edge){
+	    boolean[] check = new boolean[n];
+	    boolean[][] connect = new boolean[n][n];
+	    Queue<Integer> q = new LinkedList<>();
+	    for(int i=0; i<edge.length; i++){
+	        connect[edge[i][0]-1][edge[i][1]-1]=true;
+	        connect[edge[i][1]-1][edge[i][0]-1]=true;
+	    }
+	    check[0]=true;
+	    q.add(0);
 
-	public static int solution(int n, int[][] edge) {
-
-		int max = 0;
-		for (int i = 0; i < edge.length; i++) {
-			for (int j = 0; j < 2; j++) {
-				if (edge[i][j] >= max)
-					max = edge[i][j];
-			}
-		}
-
-		N = max;
-		M = edge.length;
-
-		map = new int[N + 1][N + 1];
-		visited = new boolean[N + 1];
-
-		for (int i = 0; i < edge.length; i++) {
-			for (int j = 0; j < 2; j++) {
-				map[edge[i][0]][edge[i][1]] = 1;
-				map[edge[i][1]][edge[i][0]] = 1;
-			}
-		}
-
-		System.out.print("");
-		int answer = 0;
-		bfs(1, answer);
-
-		return 0;
-	}
-
-	static void bfs(int point, int answer) {
-		Queue<Integer> queue = new LinkedList<>();
-		queue.offer(point);
-		visited[point] = true;
-
-		HashMap<Integer, Integer> hm = new HashMap<>();
-		int cnt = 0;
-		while (!queue.isEmpty()) {
-			System.out.println("q사이즈 : " + queue.size());
-			int x = queue.poll();
-			System.out.println(x + " 체크");
-			for (int i = 1; i <= N; i++) {
-				// 연결되있고, 미방문 시
-				if (map[x][i] == 1 && visited[i] == false) {
-					queue.offer(i);
-					visited[i] = true;
-					answer++;
-					System.out.println("answer : " + answer);
-					hm.put(i, cnt);
-				}
-//				cnt++;
-//				System.out.println("cnt : " + cnt);
-//				if(cnt == N) hm.put(x, cnt);
-			}
-			cnt++;
-			System.out.println("cnt : " + cnt);
-		}
-		for( int key : hm.keySet() ){
-			 System.out.println( String.format("키 : %s, 값 : %s", key, hm.get(key)));
-		}
-
+	    int answer = 0;
+	    while(!q.isEmpty()){
+	        int qSize = q.size();
+	        for(int i=0; i<qSize;i++){
+	            int node = q.poll();
+	            for(int j=0; j<n; j++){
+	                if(connect[j][node]&&!check[j]){
+	                    check[j]=true;
+	                    q.add(j);
+	                }
+	            }
+	        }
+	        answer=qSize;
+	    }
+	    return answer;
 	}
 
 	public static void main(String[] args) {

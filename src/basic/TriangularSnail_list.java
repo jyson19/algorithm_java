@@ -1,4 +1,4 @@
-package array;
+package basic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 
 // 삼각 달팽이
 // https://programmers.co.kr/learn/courses/30/lessons/68645?language=java
-public class TriangularSnail {
+public class TriangularSnail_list {
 	// 전체 갯수
 	// 4 : 10
 	// 5 : 15
@@ -88,7 +88,7 @@ public class TriangularSnail {
 
 	public static void main(String[] args) {
 		// 9부터 안돌아감..
-		int n = 8;
+		int n = 9;
 //		int n = 1;
 //		int n = 2;
 //		int n = 3;
