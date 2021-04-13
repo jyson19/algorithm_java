@@ -1,9 +1,5 @@
 package dp;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
-
 public class IntegerTriangle {
 	public static int solution(int[][] triangle) {
 		int[][] temp = new int[triangle.length][triangle.length];
@@ -15,11 +11,11 @@ public class IntegerTriangle {
 			temp[i][i] = temp[i - 1][i - 1] + triangle[i][i];
 		}
 
+		// 끝라인 값 도출
 		for (int i = 2; i < triangle.length; i++)
 			for (int j = 1; j < i; j++)
 				temp[i][j] = Math.max(temp[i - 1][j - 1], temp[i - 1][j]) + triangle[i][j];
 
-		// 끝라인 값 도출
 //		System.out.println(temp[temp.length - 1][0]);
 //		System.out.println(temp[temp.length - 1][1]);
 //		System.out.println(temp[temp.length - 1][2]);
